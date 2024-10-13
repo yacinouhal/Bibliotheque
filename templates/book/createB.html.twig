@@ -1,0 +1,8 @@
+<h1>Create Author</h1>
+{% block body %}
+    {{ form_start(monFormulaire) }}
+        {{ form_widget(monFormulaire) }}
+
+        <input type="submit" value="create Book" formnovalidate>
+    {{ form_end(monFormulaire) }}
+{% endblock %}

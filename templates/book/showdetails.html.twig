@@ -1,0 +1,6 @@
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; text-align: center;">
+    <h1>BOOK</h1>
+    <p>Title of Book : {{ book.Title }}</p>
+    <p>Publication Date : {{ book.publicationDate|format_datetime() }}</p>
+    <p>Author : {{ book.author.UserName }}</p>
+</div>

@@ -1,0 +1,45 @@
+
+{% block body %}
+<h1 style="text-align: center;" >Liste des auteurs</h1>
+<h2 style="text-align: center;" >Nombre d'auteurs : {{ Authors| length }}</h2>
+<h1 style="text-align: center;" ><a href="{{ path('app_add_author') }}">Create Author</a></h1>
+
+<table border="solid" style="width: 80%; margin: 20px auto; border: 1px solid #000;">
+        <tr>
+             <h1><th>Id </th></h1>
+             <h1><th>UserName </th></h1>
+             <h1><th>Email </th></h1>
+             <h1><th>Actions</th></h1>
+        </tr>
+{% for Author in Authors %}
+       <tr>
+             <td><h4>{{Author.id}}</h4></td>
+             <td><h4>{{Author.UserName | upper}}</h4></td>
+             <td><h4>{{Author.Email}}</h4></td>
+             <td>
+                  <a href="{{ path('app_edit',{id:Author.id}) }}">EDIT</a> | <a href="{{ path('app_delete',{id:Author.id}) }}">DELETE</a>
+             </td>
+       </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+
+{# {{"nombre books : " ~ totalbooks }} 
+
+{# <br>
+{% set chaine = "Bonjour" %}
+{% set chaine = "Bonjour yasssine" %}
+{{ chaine }}
+<br>
+{% for i in range(0, 3) %}
+{{ i }} <br>
+{% endfor %}
+<br>
+{% for i in range(low=0, high=7, step=2) %}
+{{ i }} <br>
+{% endfor %} #}
+
+
+{# <h1>Nom du service : {{name}}</h1> #}

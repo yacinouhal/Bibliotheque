@@ -1,0 +1,50 @@
+{% block body %}
+<h1 style="text-align: center;" >Liste des livres</h1>
+<h1 style="text-align: center;" ><a href="{{ path('app_add') }}">Create Book</a></h1>
+<table border="solid" style="width: 80%; margin: 20px auto; border: 1px solid #000;">
+        <tr>
+             <h1><th>Id </th></h1>
+             <h1><th width="20%" >Title </th></h1>
+             <h1><th width="35%" >Publication Date </th></h1>
+             <h1><th>Pubished</th></h1>
+             <h1><th>Author</th></h1>
+             <h1><th>Categorie</th></h1>
+             <h1><th width="32%">Actions</th></h1>
+        </tr>
+{% for Book in Books %}
+       <tr>
+             <td><h4>{{Book.id}}</h4></td>
+             <td><h4>{{Book.Title}}</h4></td>
+             <td><h4>{{Book.publicationDate|format_datetime() }}</h4></td>
+             <td><h4>{{Book.enabled}}</h4></td>
+             <td><h4>{{Book.author.UserName}}</h4></td>   
+             <td><h4>{{Book.category}}</h4></td>
+             <td>
+                  <a href="{{ path('app_edit',{id:Book.id}) }}">EDIT</a> | <a href="{{ path('app_delete',{id:Book.id}) }}">DELETE</a> |  <a href="{{ path('app_details',{id:Book.id}) }}">SHOW</a> 
+             </td>
+       </tr>
+{% endfor %}
+</table>
+<h2 style="text-align: center;" >Number de book : {{ Books| length }}</h2>
+<h2 style="text-align: center;" >Number of published books: {{ Books|filter(book => book.enabled)|length }}</h2>
+<h2 style="text-align: center;" >Number of non-published books: {{ Books|filter(book => not book.enabled)|length }}</h2>
+{% endblock %}
+
+
+{# {{"nombre books : " ~ totalbooks }} 
+
+{# <br>
+{% set chaine = "Bonjour" %}
+{% set chaine = "Bonjour yasssine" %}
+{{ chaine }}
+<br>
+{% for i in range(0, 3) %}
+{{ i }} <br>
+{% endfor %}
+<br>
+{% for i in range(low=0, high=7, step=2) %}
+{{ i }} <br>
+{% endfor %} #}
+
+
+{# <h1>Nom du service : {{name}}</h1> #}

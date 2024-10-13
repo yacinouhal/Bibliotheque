@@ -1,0 +1,8 @@
+<h1>Edit Book</h1>
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <input type="submit" value="edit Book" formnovalidate>
+    {{ form_end(form) }}
+{% endblock %}

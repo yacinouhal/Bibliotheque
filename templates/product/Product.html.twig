@@ -1,0 +1,43 @@
+{% block body %}
+<h1 style="text-align: center;" >Liste des Products</h1>
+<h1 style="text-align: center;" ><a href="{{ path('app_add_Product') }}">Create Product</a></h1>
+<table border="solid" style="width: 80%; margin: 20px auto; border: 1px solid #000;">
+        <tr>
+             <h1><th>Id </th></h1>
+             <h1><th width="20%" >Name </th></h1>
+             <h1><th width="35%" >Publication Date </th></h1>
+             <h1><th>Categorie</th></h1>
+             <h1><th width="32%">Actions</th></h1>
+        </tr>
+{% for Product in Products %}
+       <tr>
+             <td><h4>{{Product.id}}</h4></td>
+             <td><h4>{{Product.name}}</h4></td>
+             <td><h4>{{Product.DatePublication|format_datetime() }}</h4></td>
+             <td><h4>{{Product.category.name}}</h4></td>
+             <td>
+                  <a href="{{ path('app_edit_Product',{id:Product.id}) }}">EDIT</a> | <a href="{{ path('app_delete_Product',{id:Product.id}) }}">DELETE</a> |  <a href="{{ path('app_details_Product',{id:Product.id}) }}">SHOW</a> 
+             </td>
+       </tr>
+{% endfor %}
+</table>
+{% endblock %}
+
+
+{# {{"nombre Products : " ~ totalbooks }} 
+
+{# <br>
+{% set chaine = "Bonjour" %}
+{% set chaine = "Bonjour yasssine" %}
+{{ chaine }}
+<br>
+{% for i in range(0, 3) %}
+{{ i }} <br>
+{% endfor %}
+<br>
+{% for i in range(low=0, high=7, step=2) %}
+{{ i }} <br>
+{% endfor %} #}
+
+
+{# <h1>Nom du service : {{name}}</h1> #}

@@ -16,7 +16,7 @@ class AuthorController extends AbstractController
     #[Route('/Author', name: 'app_Author')]
     public function listAuthor(AuthorRepository $repo)
     {       
-            return $this->render("/Author/showlist.html.twig",[
+            return $this->render("/Author/showlistC.html.twig",[
             'Authors'=> $repo->findAll()
             ]);
     }
@@ -25,6 +25,14 @@ class AuthorController extends AbstractController
     public function goToIndex ()
     {
         return $this->redirectToRoute('app_Home');
+    }
+
+    #[Route('/Author/details/{id}',name : 'app_details_author')]
+    public function AuthorDetails(Author $Auth)
+    {
+        return $this->render('/Author/showdetailsC.html.twig',[
+            'author' => $Auth
+        ]);
     }
 
 
@@ -45,13 +53,13 @@ class AuthorController extends AbstractController
             return $this->redirectToRoute('app_Author');
         }
 
-       return $this->render('/Author/createA.html.twig',[
+       return $this->render('/Author/createC.html.twig',[
         'monFormulaire' => $form->createView()
        ]);
     }
 
 
-    #[Route('/Author/edit/{id}',name: 'app_edit',methods:['PUT','POST'])]
+    #[Route('/Author/edit/{id}',name: 'app_edit_author')]
     public function editAuthor(ManagerRegistry $manager ,Request $request, Author $Auth): Response
     {
         $form = $this->createForm(AuthorType::class,$Auth);
@@ -72,7 +80,7 @@ class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route('/Author/delete/{id}',name: 'app_delete')]
+    #[Route('/Author/delete/{id}',name: 'app_delete_author',methods:['POST','GET'])]
     public function deleteAuthor(ManagerRegistry $manager,Author $Auth): Response
     {
        $em = $manager->getManager();

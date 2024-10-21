@@ -25,7 +25,7 @@ class Author
     /**
      * @var Collection<int, Book>
      */
-    #[ORM\OneToMany(targetEntity: Book::class, mappedBy: 'author')]
+    #[ORM\OneToMany(targetEntity: Book::class, mappedBy: 'author' ,orphanRemoval: true)]
     private Collection $books;
 
     public function __construct()

@@ -1,6 +1,6 @@
 <h1>Edit Author</h1>
 {% block body %}
-    {{ form_start(form) }}
+{{ form_start(form, {'method': 'PUT', 'action': path('app_edit_author', {'id': Author.id})}) }}
         {{ form_widget(form) }}
 
         <input type="submit" value="edit Author" formnovalidate>

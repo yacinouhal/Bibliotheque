@@ -9,6 +9,7 @@
              <h1><th>Id </th></h1>
              <h1><th>UserName </th></h1>
              <h1><th>Email </th></h1>
+             <h1><th>Title </th></h1>
              <h1><th>Actions</th></h1>
         </tr>
 {% for Author in Authors %}
@@ -17,7 +18,14 @@
              <td><h4>{{Author.UserName | upper}}</h4></td>
              <td><h4>{{Author.Email}}</h4></td>
              <td>
-                  <a href="{{ path('app_edit',{id:Author.id}) }}">EDIT</a> | <a href="{{ path('app_delete',{id:Author.id}) }}">DELETE</a>
+                <ul>
+                    {% for b in Author.books %}
+                         <li>{{ b.Title }}</li>
+                    {% endfor %}
+                </ul>
+             </td>
+             <td>
+                  <a href="{{ path('app_edit_author',{id:Author.id}) }}">EDIT</a> | <a href="{{ path('app_delete_author',{id:Author.id}) }}">DELETE</a> | <a href="{{ path('app_details_author',{id:Author.id}) }}">SHOW</a>
              </td>
        </tr>
 {% endfor %}
